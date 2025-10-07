@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/header";
 import { StockCard } from "@/components/dashboard/stock-card";
 import { LoginForm } from "@/components/auth/login-form";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -112,7 +113,18 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <LoginForm />
+            <div className="space-y-4">
+              <LoginForm />
+              <div className="text-center">
+                <span className="text-gray-400">Don't have an account? </span>
+                <Link
+                  href="/signup"
+                  className="text-yellow-400 hover:text-yellow-300 font-medium hover:underline transition-colors"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </main>

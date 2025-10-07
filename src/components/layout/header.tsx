@@ -1,30 +1,41 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
-        <div className="mr-4 flex">
-          <a className="mr-6 flex items-center space-x-2" href="/">
-            <span className="hidden font-bold sm:inline-block">
-              Stock Market App
-            </span>
-          </a>
+    <header className="header">
+      <div className="header-wrapper">
+        <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/assets/images/logo.png"
+              alt="Signalist"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+            />
+            <span className="text-xl font-bold text-white">Signalist</span>
+          </Link>
         </div>
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            {/* Search or navigation items can go here */}
-          </div>
-          <nav className="flex items-center space-x-2">
-            <Button variant="ghost" size="sm">
+        <nav className="flex items-center space-x-4">
+          <Link href="/login">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-gray-400 hover:text-white"
+            >
               Sign In
             </Button>
-            <Button size="sm">Get Started</Button>
-          </nav>
-        </div>
+          </Link>
+          <Link href="/signup">
+            <Button size="sm" className="yellow-btn">
+              Get Started
+            </Button>
+          </Link>
+        </nav>
       </div>
     </header>
   );
