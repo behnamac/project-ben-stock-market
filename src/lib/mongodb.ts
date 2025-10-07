@@ -1,13 +1,5 @@
 import mongoose from "mongoose";
 
-// Extend the global object to include mongoose
-declare global {
-  var mongoose: {
-    conn: typeof mongoose | null;
-    promise: Promise<typeof mongoose> | null;
-  } | undefined;
-}
-
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
@@ -16,45 +8,21 @@ if (!MONGODB_URI) {
   );
 }
 
-/**
- * Global is used here to maintain a cached connection across hot reloads
- * in development. This prevents connections growing exponentially
- * during API Route usage.
- */
-let cached = global.mongoose;
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
-
-// Ensure cached is not undefined
-if (!cached) {
-  throw new Error("Failed to initialize mongoose cache");
-}
-
+// Simple connection function without caching for now
 async function connectDB() {
-  if (cached!.conn) {
-    return cached!.conn;
-  }
-
-  if (!cached!.promise) {
-    const opts = {
-      bufferCommands: false,
-    };
-
-    cached!.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose;
-    });
+  if (mongoose.connection.readyState === 1) {
+    return mongoose;
   }
 
   try {
-    cached!.conn = await cached!.promise;
-  } catch (e) {
-    cached!.promise = null;
-    throw e;
+    await mongoose.connect(MONGODB_URI!, {
+      bufferCommands: false,
+    });
+    return mongoose;
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    throw error;
   }
-
-  return cached!.conn;
 }
 
 export default connectDB;
