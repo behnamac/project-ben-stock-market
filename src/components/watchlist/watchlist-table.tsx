@@ -3,8 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { PriceAlertModal } from "@/components/modals/price-alert-modal";
 
 export function WatchlistTable() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedStock, setSelectedStock] = useState<{
+    symbol: string;
+    name: string;
+  } | null>(null);
+
   const [watchlistStocks, setWatchlistStocks] = useState([
     {
       symbol: "AAPL",
@@ -168,6 +175,16 @@ export function WatchlistTable() {
     );
   };
 
+  const handleAddAlert = (symbol: string, name: string) => {
+    setSelectedStock({ symbol, name });
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedStock(null);
+  };
+
   return (
     <div className="bg-gray-800 rounded-lg p-6">
       <div className="flex items-center justify-between mb-6">
@@ -256,6 +273,7 @@ export function WatchlistTable() {
                     variant="outline"
                     size="sm"
                     className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                    onClick={() => handleAddAlert(stock.symbol, stock.name)}
                   >
                     Add Alert
                   </Button>
@@ -265,6 +283,14 @@ export function WatchlistTable() {
           </tbody>
         </table>
       </div>
+
+      {/* Price Alert Modal */}
+      <PriceAlertModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        stockSymbol={selectedStock?.symbol}
+        stockName={selectedStock?.name}
+      />
     </div>
   );
 }

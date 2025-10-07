@@ -3,8 +3,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { PriceAlertModal } from "@/components/modals/price-alert-modal";
 
 export function AlertsSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [alerts, setAlerts] = useState([
     {
       id: 1,
@@ -67,11 +70,21 @@ export function AlertsSection() {
     setAlerts((prev) => prev.filter((alert) => alert.id !== id));
   };
 
+  const handleCreateAlert = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="bg-gray-800 rounded-lg p-6">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-white">Alerts</h2>
-        <Button className="yellow-btn">Create Alert</Button>
+        <Button className="yellow-btn" onClick={handleCreateAlert}>
+          Create Alert
+        </Button>
       </div>
 
       <div className="space-y-4">
@@ -153,6 +166,9 @@ export function AlertsSection() {
           </Card>
         ))}
       </div>
+
+      {/* Price Alert Modal */}
+      <PriceAlertModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }
