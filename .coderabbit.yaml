@@ -1,0 +1,70 @@
+# CodeRabbit Configuration
+# This file configures CodeRabbit for automated code reviews
+
+# General settings
+general:
+  # Enable/disable CodeRabbit
+  enabled: true
+
+  # Language settings
+  language: "en"
+
+  # Review settings
+  review:
+    # Enable inline comments
+    inline_comments: true
+
+    # Enable summary comments
+    summary_comments: true
+
+    # Focus on specific areas
+    focus_areas:
+      - "security"
+      - "performance"
+      - "code_quality"
+      - "best_practices"
+      - "accessibility"
+
+# File patterns to include/exclude
+files:
+  include:
+    - "src/**/*.{ts,tsx,js,jsx}"
+    - "*.{json,md,yaml,yml}"
+
+  exclude:
+    - "node_modules/**"
+    - ".next/**"
+    - "dist/**"
+    - "build/**"
+
+# Custom rules for this project
+rules:
+  # TypeScript specific rules
+  typescript:
+    - "Prefer explicit return types for functions"
+    - "Use strict null checks"
+    - "Avoid any type usage"
+
+  # React specific rules
+  react:
+    - "Use functional components over class components"
+    - "Prefer hooks over lifecycle methods"
+    - "Use proper key props for lists"
+
+  # Next.js specific rules
+  nextjs:
+    - "Use App Router patterns"
+    - "Optimize images with next/image"
+    - "Use proper SEO meta tags"
+
+  # Security rules
+  security:
+    - "Validate all user inputs"
+    - "Use environment variables for secrets"
+    - "Implement proper authentication"
+
+  # Performance rules
+  performance:
+    - "Optimize bundle size"
+    - "Use dynamic imports for large components"
+    - "Implement proper caching strategies"

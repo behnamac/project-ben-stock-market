@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stock Market App
 
-## Getting Started
+A modern full-stack stock market application built with Next.js, TypeScript, and a comprehensive tech stack.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+- **Frontend**: Next.js 14 with App Router
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn/ui
+- **Database**: MongoDB with Mongoose
+- **Authentication**: BetterAuth
+- **Background Jobs**: Inngest
+- **Code Review**: Code Rabbit
+- **Language**: TypeScript
+
+## ✨ Features
+
+- 📊 Real-time stock market dashboard
+- 🔐 Secure authentication with BetterAuth
+- 🎨 Modern UI with Shadcn/ui components
+- 📱 Responsive design with Tailwind CSS
+- 🔄 Background job processing with Inngest
+- 🗄️ MongoDB database integration
+- 🛡️ Type-safe development with TypeScript
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- MongoDB (local or cloud)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd project-ben-stock-market
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Set up environment variables:
+
+```bash
+cp .env.local.example .env.local
+```
+
+4. Update the `.env.local` file with your configuration:
+
+```env
+MONGODB_URI=mongodb://localhost:27017/stock-market-app
+BETTER_AUTH_SECRET=your-secret-key-here
+BETTER_AUTH_URL=http://localhost:3000
+INNGEST_EVENT_KEY=your-inngest-event-key
+INNGEST_SIGNING_KEY=your-inngest-signing-key
+```
+
+5. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── api/               # API routes
+│   │   ├── auth/          # Authentication endpoints
+│   │   └── inngest/       # Inngest webhook
+│   └── page.tsx           # Home page
+├── components/            # React components
+│   ├── auth/             # Authentication components
+│   ├── dashboard/        # Dashboard components
+│   ├── layout/           # Layout components
+│   └── ui/               # Shadcn/ui components
+└── lib/                  # Utility functions
+    ├── auth.ts           # BetterAuth configuration
+    ├── inngest.ts       # Inngest client
+    └── mongodb.ts        # Database connection
+```
 
-## Learn More
+## 🔧 Configuration
 
-To learn more about Next.js, take a look at the following resources:
+### MongoDB Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Install MongoDB locally or use MongoDB Atlas
+2. Update the `MONGODB_URI` in your `.env.local` file
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### BetterAuth Setup
 
-## Deploy on Vercel
+1. Configure your authentication providers in `src/lib/auth.ts`
+2. Set up your `BETTER_AUTH_SECRET` in the environment variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Inngest Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Create an Inngest account and get your event key
+2. Update the Inngest configuration in your environment variables
+
+## 🚀 Deployment
+
+The application is ready for deployment on platforms like Vercel, Netlify, or any Node.js hosting service.
+
+### Vercel Deployment
+
+1. Connect your repository to Vercel
+2. Set up your environment variables in the Vercel dashboard
+3. Deploy!
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📞 Support
+
+If you have any questions or need help, please open an issue in the repository.
