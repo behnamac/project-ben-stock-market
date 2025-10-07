@@ -119,11 +119,11 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
           try {
             const url = `${FINNHUB_BASE_URL}/stock/profile2?symbol=${encodeURIComponent(sym)}&token=${token}`;
             // Revalidate every hour
-            const profile = await fetchJSON<any>(url, 3600);
-            return { sym, profile } as { sym: string; profile: any };
+            const profile = await fetchJSON<Record<string, unknown>>(url, 3600);
+            return { sym, profile } as { sym: string; profile: Record<string, unknown> };
           } catch (e) {
             console.error('Error fetching profile2 for', sym, e);
-            return { sym, profile: null } as { sym: string; profile: any };
+            return { sym, profile: null } as { sym: string; profile: Record<string, unknown> | null };
           }
         })
       );
@@ -131,8 +131,8 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
       results = profiles
         .map(({ sym, profile }) => {
           const symbol = sym.toUpperCase();
-          const name: string | undefined = profile?.name || profile?.ticker || undefined;
-          const exchange: string | undefined = profile?.exchange || undefined;
+          const name: string | undefined = (profile?.name as string) || (profile?.ticker as string) || undefined;
+          const exchange: string | undefined = (profile?.exchange as string) || undefined;
           if (!name) return undefined;
           const r: FinnhubSearchResult = {
             symbol,
@@ -143,7 +143,7 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
           // We don't include exchange in FinnhubSearchResult type, so carry via mapping later using profile
           // To keep pipeline simple, attach exchange via closure map stage
           // We'll reconstruct exchange when mapping to final type
-          (r as any).__exchange = exchange; // internal only
+          (r as Record<string, unknown>).__exchange = exchange; // internal only
           return r;
         })
         .filter((x): x is FinnhubSearchResult => Boolean(x));
@@ -158,7 +158,7 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
         const upper = (r.symbol || '').toUpperCase();
         const name = r.description || upper;
         const exchangeFromDisplay = (r.displaySymbol as string | undefined) || undefined;
-        const exchangeFromProfile = (r as any).__exchange as string | undefined;
+        const exchangeFromProfile = (r as Record<string, unknown>).__exchange as string | undefined;
         const exchange = exchangeFromDisplay || exchangeFromProfile || 'US';
         const type = r.type || 'Stock';
         const item: StockWithWatchlistStatus = {

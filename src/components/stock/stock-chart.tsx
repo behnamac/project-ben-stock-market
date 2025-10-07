@@ -137,7 +137,7 @@ export function StockChart({ symbol }: StockChartProps) {
         {/* Right Column - Key Stats */}
         <div className="space-y-4">
           <div>
-            <div className="text-sm text-gray-400 mb-2">Day's Range</div>
+            <div className="text-sm text-gray-400 mb-2">Day&apos;s Range</div>
             <div className="flex items-center gap-2">
               <span className="text-white">{chartData.dayRange.low}</span>
               <div className="flex-1 bg-gray-700 rounded-full h-2 relative">

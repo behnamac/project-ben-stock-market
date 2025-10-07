@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -331,7 +331,7 @@ export function DashboardPreview() {
             {/* Today's Top Stocks */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold">Today's Top Stocks</h2>
+                <h2 className="text-2xl font-bold">Today&apos;s Top Stocks</h2>
                 <button className="text-yellow-400 hover:text-yellow-300 text-sm font-medium">
                   View all
                 </button>
@@ -444,7 +444,7 @@ export function DashboardPreview() {
             {/* Today's Financial News */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold">Today's Financial News</h2>
+                <h2 className="text-2xl font-bold">Today&apos;s Financial News</h2>
                 <button className="text-yellow-400 hover:text-yellow-300 text-sm font-medium">
                   View all
                 </button>

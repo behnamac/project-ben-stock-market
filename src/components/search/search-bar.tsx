@@ -93,7 +93,7 @@ export function SearchBar() {
     setIsDropdownOpen(false);
   };
 
-  const handleStockClick = (symbol: string) => {
+  const handleStockClick = () => {
     setSearchQuery("");
     setIsDropdownOpen(false);
     setIsFocused(false);
@@ -172,7 +172,7 @@ export function SearchBar() {
                 <Link
                   key={index}
                   href={`/stock/${stock.symbol}`}
-                  onClick={() => handleStockClick(stock.symbol)}
+                  onClick={() => handleStockClick()}
                   className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
                 >
                   {/* Trend Icon */}

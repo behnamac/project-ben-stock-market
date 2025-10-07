@@ -77,7 +77,7 @@ export default function LoginPage() {
 
           {/* Sign Up Link */}
           <div className="text-center">
-            <span className="text-gray-400">Don't have an account? </span>
+            <span className="text-gray-400">Don&apos;t have an account? </span>
             <Link href="/signup" className="footer-link">
               Sign Up
             </Link>
@@ -90,8 +90,8 @@ export default function LoginPage() {
         {/* Testimonial */}
         <div className="mb-8">
           <blockquote className="auth-blockquote">
-            "Signalist turned my watchlist into a winning list. The alerts are
-            spot-on, and I feel more confident making moves in the market."
+            &ldquo;Signalist turned my watchlist into a winning list. The alerts are
+            spot-on, and I feel more confident making moves in the market.&rdquo;
           </blockquote>
           <div className="flex items-center justify-between">
             <div>

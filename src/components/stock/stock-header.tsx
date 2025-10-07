@@ -6,7 +6,7 @@ interface StockHeaderProps {
   symbol: string;
 }
 
-export function StockHeader({ symbol }: StockHeaderProps) {
+export function StockHeader({ }: StockHeaderProps) {
   // Mock data - in real app, this would come from API
   const stockData = {
     name: "APPLE INC",

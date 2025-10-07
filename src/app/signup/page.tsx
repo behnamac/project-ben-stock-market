@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
+// import { Card, CardContent } from "@/components/ui/card";
 
 export default function SignUpPage() {
   const [formData, setFormData] = useState({
@@ -225,8 +225,8 @@ export default function SignUpPage() {
         {/* Testimonial */}
         <div className="mb-8">
           <blockquote className="auth-blockquote">
-            "Signalist turned my watchlist into a winning list. The alerts are
-            spot-on, and I feel more confident making moves in the market."
+            &ldquo;Signalist turned my watchlist into a winning list. The alerts are
+            spot-on, and I feel more confident making moves in the market.&rdquo;
           </blockquote>
           <div className="flex items-center justify-between">
             <div>
