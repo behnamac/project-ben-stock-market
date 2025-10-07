@@ -11,10 +11,9 @@ export default function LoginPage() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    rememberMe: false,
   });
 
-  const handleInputChange = (field: string, value: string | boolean) => {
+  const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -32,19 +31,12 @@ export default function LoginPage() {
       <div className="auth-left-section">
         <div className="auth-logo">
           <div className="flex items-center gap-3 mb-8">
-            <Image
-              src="/assets/images/logo.png"
-              alt="Signalist"
-              width={40}
-              height={40}
-              className="w-10 h-10"
-            />
+            <div className="w-10 h-10 bg-gradient-to-r from-green-400 to-yellow-400 rounded flex items-center justify-center">
+              <span className="text-black font-bold text-lg">S</span>
+            </div>
             <span className="text-2xl font-bold text-white">Signalist</span>
           </div>
-          <h1 className="form-title">Welcome Back</h1>
-          <p className="text-gray-400 text-lg">
-            Sign in to your account to continue
-          </p>
+          <h1 className="form-title">Log In Your Account</h1>
         </div>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
@@ -78,30 +70,9 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Remember Me & Forgot Password */}
-          <div className="flex items-center justify-between">
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={formData.rememberMe}
-                onChange={(e) =>
-                  handleInputChange("rememberMe", e.target.checked)
-                }
-                className="rounded border-gray-600 bg-gray-800 text-yellow-500 focus:ring-yellow-500"
-              />
-              <span className="text-sm text-gray-400">Remember me</span>
-            </label>
-            <Link
-              href="/forgot-password"
-              className="text-sm text-yellow-400 hover:text-yellow-300"
-            >
-              Forgot password?
-            </Link>
-          </div>
-
           {/* Submit Button */}
           <Button type="submit" className="yellow-btn w-full">
-            Sign In
+            Log In
           </Button>
 
           {/* Sign Up Link */}
