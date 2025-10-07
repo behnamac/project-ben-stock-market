@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export function DashboardHeader() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="bg-gray-800 border-b border-gray-700 px-6 py-4">
@@ -20,26 +22,42 @@ export function DashboardHeader() {
 
           <nav className="flex gap-8 text-sm">
             <Link
-              href="/dashboard"
-              className="text-yellow-400 font-medium border-b-2 border-yellow-400 pb-1"
+              href="/"
+              className={`${
+                pathname === "/" || pathname === "/dashboard"
+                  ? "text-yellow-400 font-medium border-b-2 border-yellow-400 pb-1"
+                  : "text-gray-400 hover:text-yellow-400 transition-colors"
+              }`}
             >
               Dashboard
             </Link>
             <Link
               href="/search"
-              className="text-gray-400 hover:text-yellow-400 transition-colors"
+              className={`${
+                pathname === "/search"
+                  ? "text-yellow-400 font-medium border-b-2 border-yellow-400 pb-1"
+                  : "text-gray-400 hover:text-yellow-400 transition-colors"
+              }`}
             >
               Search
             </Link>
             <Link
               href="/watchlist"
-              className="text-gray-400 hover:text-yellow-400 transition-colors"
+              className={`${
+                pathname === "/watchlist"
+                  ? "text-yellow-400 font-medium border-b-2 border-yellow-400 pb-1"
+                  : "text-gray-400 hover:text-yellow-400 transition-colors"
+              }`}
             >
               Watchlist
             </Link>
             <Link
               href="/news"
-              className="text-gray-400 hover:text-yellow-400 transition-colors"
+              className={`${
+                pathname === "/news"
+                  ? "text-yellow-400 font-medium border-b-2 border-yellow-400 pb-1"
+                  : "text-gray-400 hover:text-yellow-400 transition-colors"
+              }`}
             >
               News
             </Link>
