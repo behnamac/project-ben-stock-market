@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export function StockHeatmap() {
   const sectors = [
     {
@@ -119,19 +121,20 @@ export function StockHeatmap() {
             </h3>
             <div className="flex flex-wrap gap-2">
               {sector.stocks.map((stock, stockIndex) => (
-                <div
-                  key={stockIndex}
-                  className={`${getSizeClass(stock.size)} ${getColorClass(
-                    stock.change
-                  )} rounded flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity`}
-                  title={`${stock.symbol}: ${stock.change > 0 ? "+" : ""}${
-                    stock.change
-                  }%`}
-                >
-                  <span className="text-white text-xs font-bold">
-                    {stock.symbol}
-                  </span>
-                </div>
+                <Link key={stockIndex} href={`/stock/${stock.symbol}`}>
+                  <div
+                    className={`${getSizeClass(stock.size)} ${getColorClass(
+                      stock.change
+                    )} rounded flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity`}
+                    title={`${stock.symbol}: ${stock.change > 0 ? "+" : ""}${
+                      stock.change
+                    }%`}
+                  >
+                    <span className="text-white text-xs font-bold">
+                      {stock.symbol}
+                    </span>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
