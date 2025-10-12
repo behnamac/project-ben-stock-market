@@ -9,7 +9,7 @@ interface TradingViewWidgetProps {
 }
 
 function TradingViewWidget({
-  symbol = "NASDAQ:AAPL",
+  symbol = "SPXUSD",
   height = "100%",
   width = "100%",
 }: TradingViewWidgetProps) {
@@ -25,28 +25,51 @@ function TradingViewWidget({
     script.async = true;
     script.innerHTML = `
       {
-        "allow_symbol_change": true,
-        "calendar": false,
-        "details": false,
-        "hide_side_toolbar": true,
+        "autosize": true,
+        "symbol": "${symbol}",
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "dark",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#1e1e1e",
+        "enable_publishing": false,
         "hide_top_toolbar": false,
         "hide_legend": false,
+        "save_image": false,
+        "container_id": "tradingview_widget",
+        "hide_side_toolbar": true,
+        "studies": [],
+        "show_popup_button": true,
+        "popup_width": "1000",
+        "popup_height": "650",
+        "allow_symbol_change": true,
+        "details": true,
+        "hotlist": true,
+        "calendar": true,
         "hide_volume": false,
-        "hotlist": false,
-        "interval": "D",
-        "locale": "en",
-        "save_image": true,
-        "style": "1",
-        "symbol": "${symbol}",
-        "theme": "dark",
-        "timezone": "Etc/UTC",
+        "withdateranges": true,
+        "range": "1Y",
+        "watchlist": [
+          "SPXUSD",
+          "NSXUSD", 
+          "DJI"
+        ],
+        "compareSymbols": [],
         "backgroundColor": "#0F0F0F",
         "gridColor": "rgba(242, 242, 242, 0.06)",
-        "watchlist": [],
-        "withdateranges": false,
-        "compareSymbols": [],
-        "studies": [],
-        "autosize": true
+        "scalePosition": "right",
+        "scaleMode": "Normal",
+        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+        "fontSize": "10",
+        "noTimeScale": false,
+        "valuescale": {
+          "width": 50,
+          "scaleMargins": {
+            "top": 0.1,
+            "bottom": 0.2
+          }
+        }
       }`;
 
     container.current.appendChild(script);
@@ -78,7 +101,7 @@ function TradingViewWidget({
           rel="noopener nofollow"
           target="_blank"
         >
-          <span className="blue-text">{symbol.split(":")[1]} stock chart</span>
+          <span className="blue-text">{symbol} chart</span>
         </a>
         <span className="trademark"> by TradingView</span>
       </div>
