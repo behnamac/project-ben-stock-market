@@ -184,7 +184,7 @@ export function MarketDataTable() {
   );
 
   return (
-    <div className="bg-gray-800 rounded-lg p-6">
+    <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
       <div className="flex gap-4 mb-6">
         {sections.map((section) => (
           <button
@@ -193,7 +193,7 @@ export function MarketDataTable() {
             className={`px-4 py-2 rounded text-sm font-medium transition-colors ${
               activeSection === section.name
                 ? "bg-yellow-500 text-black"
-                : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                : "bg-gray-800 text-gray-300 hover:bg-gray-700"
             }`}
           >
             {section.name}
@@ -235,7 +235,7 @@ export function MarketDataTable() {
             {currentSection?.data.map((item, index) => (
               <tr
                 key={index}
-                className="border-b border-gray-700 hover:bg-gray-700/50"
+                className="border-b border-gray-700 hover:bg-gray-800/50"
               >
                 <td className="p-3">
                   <div className="flex items-center gap-3">

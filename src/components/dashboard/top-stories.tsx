@@ -42,7 +42,7 @@ export function TopStories() {
   ];
 
   return (
-    <div className="bg-gray-800 rounded-lg p-6">
+    <div className="bg-gray-900 p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold text-white">Top Stories</h2>
         <button className="text-gray-400 hover:text-yellow-400 transition-colors">
@@ -61,11 +61,11 @@ export function TopStories() {
         {stories.map((story, index) => (
           <Card
             key={index}
-            className="bg-gray-700 border-gray-600 hover:bg-gray-600 transition-colors cursor-pointer"
+            className="bg-gray-800 border-gray-700 hover:bg-gray-700 transition-colors cursor-pointer"
           >
             <CardContent className="p-4">
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-xs font-bold">{story.icon}</span>
                 </div>
                 <div className="flex-1 min-w-0">

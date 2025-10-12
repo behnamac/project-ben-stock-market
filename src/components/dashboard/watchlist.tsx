@@ -56,7 +56,7 @@ export function Watchlist() {
   ];
 
   return (
-    <div className="bg-gray-800 rounded-lg p-6">
+    <div className="bg-gray-900 p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold text-white">Watchlist</h2>
         <button className="text-yellow-400 hover:text-yellow-300 text-sm font-medium">
@@ -67,11 +67,11 @@ export function Watchlist() {
       <div className="space-y-3">
         {watchlistStocks.map((stock, index) => (
           <Link key={index} href={`/stock/${stock.symbol}`}>
-            <Card className="bg-gray-700 border-gray-600 hover:bg-gray-600 transition-colors cursor-pointer">
+            <Card className="bg-gray-800 border-gray-700 hover:bg-gray-700 transition-colors cursor-pointer">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center">
                       <span className="text-lg">{stock.logo}</span>
                     </div>
                     <div>
