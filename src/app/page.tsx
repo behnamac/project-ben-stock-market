@@ -1,5 +1,5 @@
 import { DashboardHeader } from "@/components/layout/dashboard-header";
-import { MarketSummary } from "@/components/dashboard/market-summary";
+import TradingViewWidget from "@/components/tradingview/tradingview-widget";
 import { StockHeatmap } from "@/components/dashboard/stock-heatmap";
 import { Watchlist } from "@/components/dashboard/watchlist";
 import { TopStories } from "@/components/dashboard/top-stories";
@@ -12,9 +12,15 @@ export default function Home() {
 
       <div className="p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column - Market Summary */}
+          {/* Left Column - TradingView Chart */}
           <div className="lg:col-span-1">
-            <MarketSummary />
+            <div className="bg-gray-800 rounded-lg p-6 h-96">
+              <TradingViewWidget
+                symbol="NASDAQ:AAPL"
+                height="100%"
+                width="100%"
+              />
+            </div>
           </div>
 
           {/* Center Column - Stock Heatmap */}
